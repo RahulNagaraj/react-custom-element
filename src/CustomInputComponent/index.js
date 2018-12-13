@@ -1,43 +1,48 @@
-const app = document.getElementById("app");
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-class CustomInput extends React.Component {
+export default class CustomInput extends Component {
   static defaultProps = {
     rules: {
-      inputType: "number"
-    }
+      inputType: "text",
+      pattern: "",
+      validator: () => {}
+    },
+    name: "custom-input",
+    inputValue: "",
+    required: false,
+    readonly: false
   };
   static propTypes = {
     rules: PropTypes.shape({
-      inputType: PropTypes.oneOf(["text", "number"])
+      inputType: PropTypes.oneOf(["text", "number"]),
+      pattern: PropTypes.string,
+      validator: PropTypes.func
     }),
-    name: PropTypes.string.isRequired
-  };
-  state = {
-    inputValue: ""
+    name: PropTypes.string,
+    inputValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    required: PropTypes.bool,
+    readonly: PropTypes.bool
   };
   handleOnChange = e => {
-    console.log(e.target.name);
-    this.setState(prevState => {
-      inputValue: e.target.value;
-    });
+    const { onChangeHandler } = this.props;
+    onChangeHandler(e);
   };
   render() {
+    const {
+      rules: { inputType },
+      name,
+      inputValue
+    } = this.props;
     return (
       <form>
         <input
-          type={this.props.rules.inputType}
-          name={this.props.name}
-          value={this.state.inputValue}
+          type={inputType}
+          name={name}
+          value={inputValue}
           onChange={this.handleOnChange}
         />
       </form>
     );
   }
 }
-
-ReactDOM.render(
-  <div>
-    <CustomInput />
-  </div>,
-  app
-);

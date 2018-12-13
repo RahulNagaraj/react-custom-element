@@ -1,24 +1,25 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import CustomInput from "./CustomInputComponent";
+import "./App.css";
 
 class App extends Component {
+  state = {
+    inputValue: ""
+  };
+  handleOnChange = e => {
+    this.setState({
+      inputValue: e.target.value
+    });
+  };
   render() {
+    const { inputValue } = this.state;
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <CustomInput
+            inputValue={inputValue}
+            onChangeHandler={this.handleOnChange}
+          />
         </header>
       </div>
     );
