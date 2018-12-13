@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import "./Input.css";
 
 export default class Input extends Component {
   static defaultProps = {
@@ -39,14 +40,23 @@ export default class Input extends Component {
       inputValue
     } = this.props;
     return (
-      <form>
-        <input
-          type={inputType}
-          name={name}
-          value={inputValue}
-          onChange={this.handleOnChange}
-        />
-      </form>
+      <div className="container">
+        <form>
+          <div className="form-group">
+            <input
+              type={inputType}
+              name={name}
+              value={inputValue}
+              onChange={this.handleOnChange}
+              required="required"
+            />
+            <label htmlFor="input" className="control-label">
+              Text Field
+            </label>
+            <i className="bar" />
+          </div>
+        </form>
+      </div>
     );
   }
 }
