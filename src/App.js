@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import CustomInput from "./CustomInputComponent";
+import { Input } from "./InputComponent";
+import logo from "./logo.svg";
 import "./App.css";
 
 class App extends Component {
@@ -16,7 +17,9 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <CustomInput
+          <img src={logo} className="App-logo" alt="logo" />
+          <Input
+            label="Name"
             inputValue={inputValue}
             onChangeHandler={this.handleOnChange}
           />
