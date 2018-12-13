@@ -20,7 +20,9 @@ export default class CustomInput extends Component {
       validator: PropTypes.func
     }),
     name: PropTypes.string,
-    inputValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    inputValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+      .isRequired,
+    onChangeHandler: PropTypes.func.isRequired,
     required: PropTypes.bool,
     readonly: PropTypes.bool
   };
