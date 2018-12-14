@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Input } from "./InputComponent";
-import logo from "./logo.svg";
+import { CustomInput } from "./InputComponent";
 import "./App.css";
 
 class App extends Component {
@@ -15,15 +14,12 @@ class App extends Component {
   render() {
     const { inputValue } = this.state;
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <Input
-            label="Name"
-            inputValue={inputValue}
-            onChangeHandler={this.handleOnChange}
-          />
-        </header>
+      <div className="">
+        <CustomInput
+          label="Name"
+          inputValue={inputValue}
+          onChangeHandler={this.handleOnChange}
+        />
       </div>
     );
   }

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "./Input.css";
 
-export default class Input extends Component {
+export default class CustomInput extends Component {
   static defaultProps = {
     rules: {
       inputType: "text",
@@ -29,9 +29,9 @@ export default class Input extends Component {
       .isRequired,
     onChangeHandler: PropTypes.func.isRequired
   };
-  handleOnChange = e => {
+  handleOnChange = value => {
     const { onChangeHandler } = this.props;
-    onChangeHandler(e);
+    onChangeHandler(value);
   };
   render() {
     const {
@@ -48,14 +48,26 @@ export default class Input extends Component {
               name={name}
               value={inputValue}
               onChange={this.handleOnChange}
-              required="required"
+              required
             />
-            <label htmlFor="input" className="control-label">
-              Text Field
+            <label for="input" className="control-label">
+              Textfield
+            </label>
+            <i className="bar" />
+          </div>
+          <div className="form-group">
+            <textarea required="required" />
+            <label for="textarea" className="control-label">
+              Textarea
             </label>
             <i className="bar" />
           </div>
         </form>
+        <div class="button-container">
+          <button type="button" class="button">
+            <span>Submit</span>
+          </button>
+        </div>
       </div>
     );
   }
